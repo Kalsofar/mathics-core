@@ -214,30 +214,7 @@ class Expression(BaseElement, NumericOperators, EvalMixin):
         #          from trepan.api import debug; debug()
         #     assert isinstance(element, BaseElement)
 
-        # Note: After we make a pass over all Expression() calls, these lines will get removed
-        # and replaced with the two commented-out lines below them:
-
-        # self._elements, self.elements_properties = convert_expression_elements(
-        #    elements, lambda x:x
-        # )
         # assert isinstance(self._elements, tuple)
-        self._elements = elements
-
-        self._build_elements_properties()
-        #
-        # comment mmatera: I found that in certain cases, the elements_properties
-        # passed as the parameter does not matches with those we generate with build:elements_properties.
-        # This is the cause of the error in the test_series.py pytest.
-        # Once it be fixed, we can uncomment the following code and remove the previous line
-        # assert (elements_properties is None or
-        #        self.elements_properties == elements_properties), ("element properties do not match",
-        #                                                           self, (self.elements_properties,
-        #                                                                  elements_properties)
-        #                                                           )
-        # if elements_properties not is None:
-        #    self.elements_properties = elements_properties
-        # else:
-        #    self._build_elements_properties()
 
         self._sequences = None
         self._cache = None
